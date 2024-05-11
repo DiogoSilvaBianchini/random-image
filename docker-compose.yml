@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  backend:
+    image: backend:1.3
+    container_name: backend
+    ports:
+      - 8081:8081
+    networks:
+      - random-network
+  frontend:
+    image: frontend:1.1
+    container_name: frontend
+    ports:
+      - 8082:8082
+    networks:
+      - random-network
+    depends_on:
+      - backend
+networks:
+  random-network:
+    driver: bridge
